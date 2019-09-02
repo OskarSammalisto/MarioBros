@@ -39,7 +39,7 @@ public class LuigiController : MonoBehaviour {
             UpdatePosition();
         }
         
-        Debug.Log("Luigi Up");
+      //  Debug.Log("Luigi Up");
     }
 
     private void MoveLuigiDown() {
@@ -48,7 +48,7 @@ public class LuigiController : MonoBehaviour {
             UpdatePosition();
         }
         
-        Debug.Log("Luigi Down");
+       // Debug.Log("Luigi Down");
     }
 
     private void UpdatePosition() {

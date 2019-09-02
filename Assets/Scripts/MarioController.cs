@@ -41,7 +41,7 @@ public class MarioController : MonoBehaviour {
             UpdatePosition();
         }
         
-        Debug.Log("Mario Up");
+      //  Debug.Log("Mario Up");
     }
 
     private void MoveMarioDown() {
@@ -51,7 +51,7 @@ public class MarioController : MonoBehaviour {
             UpdatePosition();
         }
         
-        Debug.Log("Mario Down");
+      //  Debug.Log("Mario Down");
     }
 
     private void UpdatePosition() {

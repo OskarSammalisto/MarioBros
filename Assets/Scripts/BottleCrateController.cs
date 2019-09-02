@@ -18,22 +18,23 @@ public class BottleCrateController : MonoBehaviour {
     
     public List<Transform> bottleCratePositions = new List<Transform>();
     public List<Transform> brokenCratePositions = new List<Transform>();
-    public GameObject mario;
-    public GameObject luigi;
+//    public GameObject mario;
+//    public GameObject luigi;
     public int bottleCrateCurrentPosition = 0;
     public float crateSpeed = 1.5f;
-
+    
+    private bool pause = false;
     private bool broken;
 
-//    private void OnEnable() {
-//        MarioController.MoveCrate += PlayerMoveCrate;
-//        LuigiController.MoveCrate += PlayerMoveCrate;
-//    }
-//
-//    private void OnDisable() {
-//        MarioController.MoveCrate -= PlayerMoveCrate;
-//        LuigiController.MoveCrate -= PlayerMoveCrate;
-//    }
+    private void OnEnable() {
+        GameController.Pause += Pause;
+        GameController.UnPause += UnPause;
+    }
+
+    private void OnDisable() {
+        GameController.Pause -= Pause;
+        GameController.UnPause -= UnPause;
+    }
 
     private void Start() {
         UpdatePosition();
@@ -43,30 +44,43 @@ public class BottleCrateController : MonoBehaviour {
     }
 
     private IEnumerator MoveCrate() {
-        for (int i = 0; i < bottleCratePositions.Count; i++) {
-            
-            if (broken) {
-                break;}
-            
-            if ((i == 3 && bottleCrateCurrentPosition == 2) || (i == 21 && bottleCrateCurrentPosition == 20) || 
-                (i == 39 && bottleCrateCurrentPosition == 38)) {
-                BrokenCrate(true);
-                LoseLife?.Invoke();
-                break;
+        
+            for (int i = 0; i < bottleCratePositions.Count;) {
+                        
+                        if (broken) {
+                            break;
+                            
+                        }
+
+                        if (pause) {
+                            yield return new WaitForSeconds(crateSpeed);
+                        }
+                        
+                        //TODO: God Mode On .....
+                        
+                        else if ((i == 3 && bottleCrateCurrentPosition == 2) || (i == 21 && bottleCrateCurrentPosition == 20) || 
+                            (i == 39 && bottleCrateCurrentPosition == 38)) {
+                            BrokenCrate(true);
+                            LoseLife?.Invoke();
+                            break;
+                        }
+                        else if ((i == 12 && bottleCrateCurrentPosition == 11) || (i == 30 && bottleCrateCurrentPosition == 29) ||
+                                 (i == 48 && bottleCrateCurrentPosition == 47)) {
+                            BrokenCrate(false);
+                            LoseLife?.Invoke();
+                            break;
+                        }
+                        else {
+                            bottleCrateCurrentPosition = i;
+                            UpdatePosition();
+                            i++;
+                            yield return new WaitForSeconds(crateSpeed);
+                        }
+                        
             }
-            else if ((i == 12 && bottleCrateCurrentPosition == 11) || (i == 30 && bottleCrateCurrentPosition == 29) ||
-                     (i == 48 && bottleCrateCurrentPosition == 47)) {
-                BrokenCrate(false);
-                LoseLife?.Invoke();
-                break;
-            }
-            else {
-                bottleCrateCurrentPosition = i;
-                UpdatePosition();
-                yield return new WaitForSeconds(crateSpeed);
-            }
-            
-        }
+        
+        
+        
     }
 
     private void UpdatePosition() {
@@ -88,11 +102,11 @@ public class BottleCrateController : MonoBehaviour {
     private void BrokenCrate(bool marioBroke) {
         broken = true;
         if (marioBroke) {
-            Debug.Log("mario broke it");
+          //  Debug.Log("mario broke it");
             transform.position = brokenCratePositions[0].position;
         }
         else {
-            Debug.Log("luigi broke it");
+          //  Debug.Log("luigi broke it");
             transform.position = brokenCratePositions[1].position;
         }
     }
@@ -101,7 +115,7 @@ public class BottleCrateController : MonoBehaviour {
         bottleCrateCurrentPosition++;
         UpdatePosition();
         IncreaseScore?.Invoke();
-        Debug.Log("Player Move Crate");
+       // Debug.Log("Player Move Crate");
     }
     
     private void OnTriggerEnter2D(Collider2D other) {
@@ -116,5 +130,13 @@ public class BottleCrateController : MonoBehaviour {
             }
         }
         
+    }
+
+    private void Pause() {
+        pause = true;
+    }
+
+    private void UnPause() {
+        pause = false;
     }
 }

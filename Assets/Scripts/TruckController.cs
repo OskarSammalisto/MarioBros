@@ -5,11 +5,23 @@ using UnityEngine;
 
 public class TruckController : MonoBehaviour {
 
+    public delegate void TruckStatus();
+
+    public static event TruckStatus TruckIsFull;
+    public static event TruckStatus TruckIsReady;
+
     public List<GameObject> cratesOnTruck = new List<GameObject>();
     public List<Transform> positionsOnTruck = new List<Transform>();
     public List<Transform> truckPositions = new List<Transform>();
 
     private int numberOfCrates = 0;
+    private float start;
+    private float crateLoadSpeed = 1.0f;
+    private float truckMoveSpeed = 1.0f;
+    private float newTruckSpeed = 7f;
+    private float truckDelayMoveTruck = 1.2f;
+    private float newTruckPauseTime = 7.0f;
+    private bool newTruckUnpause = true;
 
 
     
@@ -23,35 +35,57 @@ public class TruckController : MonoBehaviour {
     }
 
     private void Start() {
-        GameObject o;
-        (o = gameObject).transform.position = truckPositions[1].transform.position;
-        LeanTween.move(o, truckPositions[0].transform.position, 1f);
+        start = Time.time;
+        MoveTruckIntoPosition();
     }
 
-//    private void Update() {
-//        float start = Time.time;
-//        if (Time.time >= start + 1.0f) {
-//            LeanTween.move(gameObject, truckPositions[0].transform.position, 1.5f);
-//        }
-//    }
+    private void Update() {
+
+        if (newTruckUnpause) {
+             
+             if (Time.time  >= start + newTruckPauseTime ) {
+                 Debug.Log("started");
+                        TruckIsReady?.Invoke();
+                        newTruckUnpause = false;
+             }
+        }
+       
+    }
 
     private void StackCrate() {
-        cratesOnTruck[numberOfCrates].SetActive(true);
-        LeanTween.move(cratesOnTruck[numberOfCrates], positionsOnTruck[numberOfCrates].transform.position, time: 1f); 
-      //  cratesOnTruck[numberOfCrates].transform.position = positionsOnTruck[numberOfCrates].transform.position;
-        numberOfCrates++;
-        Debug.Log(numberOfCrates);
+        if (numberOfCrates < positionsOnTruck.Count ) {
+             cratesOnTruck[numberOfCrates].SetActive(true);
+                    LeanTween.move(cratesOnTruck[numberOfCrates], positionsOnTruck[numberOfCrates].transform.position, time: crateLoadSpeed); 
+                  //  cratesOnTruck[numberOfCrates].transform.position = positionsOnTruck[numberOfCrates].transform.position;
+                    numberOfCrates++;
+                    Debug.Log(numberOfCrates);
+        }
+       
 
         if (numberOfCrates >= positionsOnTruck.Count) {
+            TruckIsFull?.Invoke();
             StartCoroutine(MoveTruck());
-         //   LeanTween.move(gameObject, truckPositions[1].transform.position, time: 2f);
-            Debug.Log("Truck is Full");
+            StartCoroutine(DestroyTruck());
+           // Debug.Log("Truck is Full");
         }
-        // Debug.Log("Truck crate invoke!");
+       
     }
 
     IEnumerator MoveTruck() {
-        yield return new WaitForSeconds(2);
-        LeanTween.move(gameObject, truckPositions[1].transform.position, time: 1f);
+        yield return new WaitForSeconds(truckDelayMoveTruck);
+        LeanTween.move(gameObject, truckPositions[1].transform.position, time: truckMoveSpeed);
+        
+        
+    }
+
+    private void MoveTruckIntoPosition() {
+        GameObject o;
+        (o = gameObject).transform.position = truckPositions[1].transform.position;
+        LeanTween.move(o, truckPositions[0].transform.position, newTruckSpeed);
+    }
+
+    IEnumerator DestroyTruck() {
+        yield return new WaitForSeconds(6);
+        Destroy(gameObject);
     }
 }
