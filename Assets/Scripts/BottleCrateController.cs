@@ -58,18 +58,18 @@ public class BottleCrateController : MonoBehaviour {
                         
                         //TODO: God Mode On .....
                         
-                        else if ((i == 3 && bottleCrateCurrentPosition == 2) || (i == 21 && bottleCrateCurrentPosition == 20) || 
-                            (i == 39 && bottleCrateCurrentPosition == 38)) {
-                            BrokenCrate(true);
-                            LoseLife?.Invoke();
-                            break;
-                        }
-                        else if ((i == 12 && bottleCrateCurrentPosition == 11) || (i == 30 && bottleCrateCurrentPosition == 29) ||
-                                 (i == 48 && bottleCrateCurrentPosition == 47)) {
-                            BrokenCrate(false);
-                            LoseLife?.Invoke();
-                            break;
-                        }
+//                        else if ((i == 3 && bottleCrateCurrentPosition == 2) || (i == 21 && bottleCrateCurrentPosition == 20) || 
+//                            (i == 39 && bottleCrateCurrentPosition == 38)) {
+//                            BrokenCrate(true);
+//                            LoseLife?.Invoke();
+//                            break;
+//                        }
+//                        else if ((i == 12 && bottleCrateCurrentPosition == 11) || (i == 30 && bottleCrateCurrentPosition == 29) ||
+//                                 (i == 48 && bottleCrateCurrentPosition == 47)) {
+//                            BrokenCrate(false);
+//                            LoseLife?.Invoke();
+//                            break;
+//                        }
                         else {
                             bottleCrateCurrentPosition = i;
                             UpdatePosition();

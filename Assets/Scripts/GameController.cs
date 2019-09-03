@@ -18,8 +18,12 @@ public class GameController : MonoBehaviour {
   public Text missText;
   public List<String> missTextList = new List<string>(){"","Miss X", "Miss X X", "Miss X X X"};
   
+  [SerializeField]
   private int score;
+  
   private int misses;
+
+  private int missResetScore = 300;
   public float crateSpawnRate = 5f;
   
   
@@ -93,7 +97,11 @@ public class GameController : MonoBehaviour {
    private void GetPoints() {
        score++;
        SetScoreText();
-      // Debug.Log("Got A Point");
+       if (score == missResetScore) {
+           misses = 0;
+           SetMissText();
+       }
+
        
    }
 

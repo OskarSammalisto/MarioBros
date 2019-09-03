@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee2567d4-b568-46ed-be89-a11678e5c25a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Mario Bros/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mario Bros/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mario Bros/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mario Bros/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mario Bros/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BottleCrate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/BottleCrate.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Truck.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Truck.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BottleCrateController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BottleCrateController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LuigiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LuigiController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MarioController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MarioController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TruckController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TruckController.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +95,8 @@
       <workItem from="1567243472931" duration="1584000" />
       <workItem from="1567249110256" duration="1356000" />
       <workItem from="1567250525537" duration="1667000" />
-      <workItem from="1567412739061" duration="6633000" />
+      <workItem from="1567412739061" duration="7610000" />
+      <workItem from="1567492608077" duration="2779000" />
     </task>
     <servers />
   </component>
