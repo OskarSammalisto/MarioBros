@@ -7,6 +7,9 @@ public class MarioController : MonoBehaviour {
     public List<Transform> marioPositions = new List<Transform>();
     private List<int> crateMovePositions = new List<int>() {2, 20, 38};
 
+
+    public List<Sprite> marioSprites = new List<Sprite>();
+
     public GameObject bottleCrate;
    
 //    //move box by trigger
@@ -58,17 +61,31 @@ public class MarioController : MonoBehaviour {
         transform.position = marioPositions[marioCurrentPosition].position;
     }
 
-//    private void OnTriggerEnter2D(Collider2D other) {
-//        int bottleCratePosition = bottleCrate.GetComponent<BottleCrateController>().bottleCrateCurrentPosition;
-//        
-//        Debug.Log("OnTriggerEnter2D Mario");
-//        
-//        foreach (var position in crateMovePositions) {
-//            if (bottleCratePosition == position && MoveCrate != null) {
-//                MoveCrate();
-//                break;
-//            }
-//        }
-//        
-//    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (marioCurrentPosition == 2) {
+            StartCoroutine(MarioMoveShellBottom());
+        }
+        else {
+            StartCoroutine(MarioMoveShell());
+        }
+        
+    }
+
+    IEnumerator MarioMoveShellBottom() {
+        transform.localRotation = Quaternion.Euler(0, 180, 0);
+        GetComponent<SpriteRenderer>().sprite = marioSprites[2];
+        yield return new WaitForSeconds(0.1f);
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
+        yield return new WaitForSeconds(0.1f);
+        GetComponent<SpriteRenderer>().sprite = marioSprites[0];
+        
+    }
+
+    IEnumerator MarioMoveShell() {
+        GetComponent<SpriteRenderer>().sprite = marioSprites[2];
+        yield return new WaitForSeconds(0.2f);
+        GetComponent<SpriteRenderer>().sprite = marioSprites[0];
+    }
+    
+    
 }

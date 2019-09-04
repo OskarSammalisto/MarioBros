@@ -58,6 +58,7 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="BottleCrateController.cs" t="Include" />
+          <e p="ConveyorBeltController.cs" t="Include" />
           <e p="GameController.cs" t="Include" />
           <e p="LuigiController.cs" t="Include" />
           <e p="MarioController.cs" t="Include" />

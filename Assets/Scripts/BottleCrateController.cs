@@ -14,6 +14,7 @@ public class BottleCrateController : MonoBehaviour {
     //move trigger to crate
     private List<int> crateMovePositions = new List<int>() {2, 11, 20, 29, 38, 47};
     private int crateToTruckPosition = 48;
+    private SpriteRenderer spRenderer;
     
     
     public List<Transform> bottleCratePositions = new List<Transform>();
@@ -37,6 +38,7 @@ public class BottleCrateController : MonoBehaviour {
     }
 
     private void Start() {
+        spRenderer = GetComponent<SpriteRenderer>();
         UpdatePosition();
         broken = false;
 
@@ -58,18 +60,18 @@ public class BottleCrateController : MonoBehaviour {
                         
                         //TODO: God Mode On .....
                         
-//                        else if ((i == 3 && bottleCrateCurrentPosition == 2) || (i == 21 && bottleCrateCurrentPosition == 20) || 
-//                            (i == 39 && bottleCrateCurrentPosition == 38)) {
-//                            BrokenCrate(true);
-//                            LoseLife?.Invoke();
-//                            break;
-//                        }
-//                        else if ((i == 12 && bottleCrateCurrentPosition == 11) || (i == 30 && bottleCrateCurrentPosition == 29) ||
-//                                 (i == 48 && bottleCrateCurrentPosition == 47)) {
-//                            BrokenCrate(false);
-//                            LoseLife?.Invoke();
-//                            break;
-//                        }
+                        else if ((i == 3 && bottleCrateCurrentPosition == 2) || (i == 21 && bottleCrateCurrentPosition == 20) || 
+                            (i == 39 && bottleCrateCurrentPosition == 38)) {
+                            BrokenCrate(true);
+                            LoseLife?.Invoke();
+                            break;
+                        }
+                        else if ((i == 12 && bottleCrateCurrentPosition == 11) || (i == 30 && bottleCrateCurrentPosition == 29) ||
+                                 (i == 48 && bottleCrateCurrentPosition == 47)) {
+                            BrokenCrate(false);
+                            LoseLife?.Invoke();
+                            break;
+                        }
                         else {
                             bottleCrateCurrentPosition = i;
                             UpdatePosition();
@@ -114,6 +116,7 @@ public class BottleCrateController : MonoBehaviour {
     private void PlayerMoveCrate() {
         bottleCrateCurrentPosition++;
         UpdatePosition();
+        spRenderer.flipX = !spRenderer.flipX;
         IncreaseScore?.Invoke();
        // Debug.Log("Player Move Crate");
     }
