@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour {
     
   public GameObject bottleCrate;
   public GameObject truck;
+  public GameObject gameOverText;
   public Text scoreText;
   public Text missText;
   public List<String> missTextList = new List<string>(){"","Miss X", "Miss X X", "Miss X X X"};
@@ -51,6 +52,7 @@ public class GameController : MonoBehaviour {
        gameOver = false;
        score = 0;
        misses = 0;
+       gameOverText.SetActive(false);
        SetScoreText();
        SetMissText();
        SpawnTruck();
@@ -89,6 +91,7 @@ public class GameController : MonoBehaviour {
            gameOver = true;
            pause = true;
            Pause?.Invoke();
+           gameOverText.SetActive(true);
            //  Debug.Log("Game Over");
        }
        //Debug.Log("Lost Life");
