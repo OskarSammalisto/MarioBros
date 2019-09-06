@@ -25,7 +25,9 @@ public class GameController : MonoBehaviour {
   private int misses;
 
   private int missResetScore = 300;
-  public float crateSpawnRate = 5f;
+  public float crateSpawnRate = 10f;
+  private float crateSpawnRateModifier = 0.003f;
+  private float maxSpawnRate = 1.5f;
   
   
   private bool gameOver;
@@ -100,12 +102,20 @@ public class GameController : MonoBehaviour {
    private void GetPoints() {
        score++;
        SetScoreText();
+       DifficultyAdjuster();
        if (score == missResetScore) {
            misses = 0;
            SetMissText();
        }
 
        
+   }
+
+   private void DifficultyAdjuster() {
+       if (crateSpawnRate >= maxSpawnRate) {
+            crateSpawnRate = crateSpawnRate - (crateSpawnRateModifier * score);
+       }
+      
    }
 
    private void SetScoreText() {
@@ -121,6 +131,7 @@ public class GameController : MonoBehaviour {
 
    void TruckReady() {
        pause = false;
+       Instantiate(bottleCrate);
        UnPause?.Invoke();
    }
    

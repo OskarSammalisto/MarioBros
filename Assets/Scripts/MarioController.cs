@@ -6,11 +6,10 @@ using UnityEngine;
 public class MarioController : MonoBehaviour {
     public List<Transform> marioPositions = new List<Transform>();
     private List<int> crateMovePositions = new List<int>() {2, 20, 38};
-
-
     public List<Sprite> marioSprites = new List<Sprite>();
 
     public GameObject bottleCrate;
+    private SpriteRenderer spriteRenderer;
    
 //    //move box by trigger
 //    public delegate void MarioMoveCrate();
@@ -35,6 +34,7 @@ public class MarioController : MonoBehaviour {
 
     private void Start() {
         UpdatePosition();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void MoveMarioUp() {
@@ -73,18 +73,18 @@ public class MarioController : MonoBehaviour {
 
     IEnumerator MarioMoveShellBottom() {
         transform.localRotation = Quaternion.Euler(0, 180, 0);
-        GetComponent<SpriteRenderer>().sprite = marioSprites[2];
+        spriteRenderer.sprite = marioSprites[2];
         yield return new WaitForSeconds(0.1f);
         transform.localRotation = Quaternion.Euler(0, 0, 0);
         yield return new WaitForSeconds(0.1f);
-        GetComponent<SpriteRenderer>().sprite = marioSprites[0];
+        spriteRenderer.sprite = marioSprites[0];
         
     }
 
     IEnumerator MarioMoveShell() {
-        GetComponent<SpriteRenderer>().sprite = marioSprites[2];
+        spriteRenderer.sprite = marioSprites[2];
         yield return new WaitForSeconds(0.2f);
-        GetComponent<SpriteRenderer>().sprite = marioSprites[0];
+        spriteRenderer.sprite = marioSprites[0];
     }
     
     

@@ -9,9 +9,12 @@ public class LuigiController : MonoBehaviour {
     private List<int> crateMovePositions = new List<int>() {11, 29, 47};
     public List<Sprite> luigiSprites = new List<Sprite>();
     
+    
     private int luigiCurrentPosition = 2;
     
+    
     public GameObject bottleCrate;
+    private SpriteRenderer spriteRenderer;
     
 //    //move box by trigger
 //    public delegate void LuigiMoveCrate();
@@ -31,6 +34,7 @@ public class LuigiController : MonoBehaviour {
 
     private void Start() {
         UpdatePosition();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void MoveLuigiUp() {
@@ -39,8 +43,7 @@ public class LuigiController : MonoBehaviour {
             luigiCurrentPosition--;
             UpdatePosition();
         }
-        
-      //  Debug.Log("Luigi Up");
+        //  Debug.Log("Luigi Up");
     }
 
     private void MoveLuigiDown() {
@@ -48,8 +51,7 @@ public class LuigiController : MonoBehaviour {
             luigiCurrentPosition++;
             UpdatePosition();
         }
-        
-       // Debug.Log("Luigi Down");
+        // Debug.Log("Luigi Down");
     }
 
     private void UpdatePosition() {
@@ -68,19 +70,19 @@ public class LuigiController : MonoBehaviour {
 
     IEnumerator LuigiMoveShellTop() {
         
-        GetComponent<SpriteRenderer>().sprite = luigiSprites[1];
+        spriteRenderer.sprite = luigiSprites[1];
         transform.localRotation = Quaternion.Euler(0, 0, 0);
         yield return new WaitForSeconds(0.1f);
-        GetComponent<SpriteRenderer>().sprite = luigiSprites[0];
+        spriteRenderer.sprite = luigiSprites[0];
         yield return new WaitForSeconds(0.1f);
         transform.localRotation = Quaternion.Euler(0, 180, 0);
         
     }
 
     IEnumerator LuigiMoveShell() {
-        GetComponent<SpriteRenderer>().sprite = luigiSprites[1];
+        spriteRenderer.sprite = luigiSprites[1];
         yield return new WaitForSeconds(0.2f);
-        GetComponent<SpriteRenderer>().sprite = luigiSprites[0];
+        spriteRenderer.sprite = luigiSprites[0];
     }
 
 }

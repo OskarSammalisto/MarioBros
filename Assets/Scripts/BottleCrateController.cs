@@ -13,6 +13,7 @@ public class BottleCrateController : MonoBehaviour {
     
     //move trigger to crate
     private List<int> crateMovePositions = new List<int>() {2, 11, 20, 29, 38, 47};
+    public List<Sprite> crateSprites = new List<Sprite>();
     private int crateToTruckPosition = 48;
     private SpriteRenderer spRenderer;
     
@@ -22,10 +23,11 @@ public class BottleCrateController : MonoBehaviour {
 //    public GameObject mario;
 //    public GameObject luigi;
     public int bottleCrateCurrentPosition = 0;
-    public float crateSpeed = 1.5f;
+    public float crateSpeed = 0.8f;
     
     private bool pause = false;
     private bool broken;
+    private bool walkToggle = false;
 
     private void OnEnable() {
         GameController.Pause += Pause;
@@ -96,20 +98,37 @@ public class BottleCrateController : MonoBehaviour {
                  CrateOnTruck?.Invoke();
                 // Debug.Log("Crate is on truck!");
              }
+             else if (bottleCrateCurrentPosition >= 3) {
+                 walkToggle = !walkToggle;
+                 WalkAnimation(walkToggle);
+             }
         }
        
 
     }
 
+    private void WalkAnimation(bool walk) {
+
+        if (walk) {
+            spRenderer.sprite = crateSprites[1];
+        }
+        else {
+            spRenderer.sprite = crateSprites[0];
+        }
+        
+        
+    }
+
     private void BrokenCrate(bool marioBroke) {
         broken = true;
+        spRenderer.sprite = crateSprites[2];
         if (marioBroke) {
           //  Debug.Log("mario broke it");
-            transform.position = brokenCratePositions[0].position;
+          transform.position = brokenCratePositions[0].position;
         }
         else {
           //  Debug.Log("luigi broke it");
-            transform.position = brokenCratePositions[1].position;
+          transform.position = brokenCratePositions[1].position;
         }
     }
 

@@ -2133,6 +2133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cfd5485b56298d479360ef3a6c1f193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crateSprites:
+  - {fileID: 21300000, guid: 6e7dc53228edcb9418338127bfbd0c08, type: 3}
+  - {fileID: 21300000, guid: a2df8f5b4a9f0374da3bd0b0ba607468, type: 3}
+  - {fileID: 21300000, guid: e09ed2bf44adc1e47a83118b24082350, type: 3}
   bottleCratePositions:
   - {fileID: 6435396518515834087}
   - {fileID: 2063314133736199922}
@@ -2187,7 +2191,7 @@ MonoBehaviour:
   - {fileID: 2306848365827321859}
   - {fileID: 959205340200591982}
   bottleCrateCurrentPosition: 0
-  crateSpeed: 0.5
+  crateSpeed: 0.8
 --- !u!61 &3295958078874181234
 BoxCollider2D:
   m_ObjectHideFlags: 0

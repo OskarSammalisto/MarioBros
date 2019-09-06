@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee2567d4-b568-46ed-be89-a11678e5c25a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mario Bros/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mario Bros/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mario Bros/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mario Bros/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BottleCrate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/BottleCrate.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BottleCrateController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BottleCrateController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LuigiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LuigiController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MarioController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MarioController.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +26,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/BottleCrate.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameOver.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MarioController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../FiremanMA18/Assets/Game/Scripts/ButtonInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ConveyorBeltController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MoveInput.cs" root0="FORCE_HIGHLIGHTING" />
@@ -33,12 +38,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/MoveInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BroController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TruckController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MarioController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/LuigiController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BottleCrateController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ConveyorBeltController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameOver.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/LuigiController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MarioController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BottleCrateController.cs" />
       </list>
     </option>
   </component>
@@ -99,7 +104,8 @@
       <workItem from="1567250525537" duration="1667000" />
       <workItem from="1567412739061" duration="7610000" />
       <workItem from="1567492608077" duration="2900000" />
-      <workItem from="1567592322912" duration="6600000" />
+      <workItem from="1567592322912" duration="6999000" />
+      <workItem from="1567754669564" duration="3074000" />
     </task>
     <servers />
   </component>
