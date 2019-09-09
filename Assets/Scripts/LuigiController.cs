@@ -11,10 +11,14 @@ public class LuigiController : MonoBehaviour {
     
     
     private int luigiCurrentPosition = 2;
+    public Transform luigiBreakPosition;
     
     
     public GameObject bottleCrate;
+    public GameObject luigiDoor;
+    public GameObject luigiBoss;
     private SpriteRenderer spriteRenderer;
+    private bool disableInput = false;
     
 //    //move box by trigger
 //    public delegate void LuigiMoveCrate();
@@ -35,19 +39,20 @@ public class LuigiController : MonoBehaviour {
     private void Start() {
         UpdatePosition();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        luigiBoss.SetActive(false);
     }
 
     private void MoveLuigiUp() {
 
-        if (luigiCurrentPosition > 0) {
+        if (luigiCurrentPosition > 0 && !disableInput) {
             luigiCurrentPosition--;
             UpdatePosition();
         }
-        //  Debug.Log("Luigi Up");
+        //  Debug.Log("Luigi Up");,
     }
 
     private void MoveLuigiDown() {
-        if (luigiCurrentPosition < luigiPositions.Count - 1) {
+        if (luigiCurrentPosition < luigiPositions.Count - 1 && !disableInput) {
             luigiCurrentPosition++;
             UpdatePosition();
         }
@@ -84,5 +89,32 @@ public class LuigiController : MonoBehaviour {
         yield return new WaitForSeconds(0.2f);
         spriteRenderer.sprite = luigiSprites[0];
     }
+
+    public IEnumerator LuigiBreakAnimation() {
+        disableInput = true;
+        transform.position = luigiBreakPosition.position;
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
+        luigiBoss.SetActive(true);
+        luigiDoor.GetComponent<DoorController>().OpenDoor();
+        float time = Time.time;
+        while (time >= Time.time - 5f) {
+            spriteRenderer.sprite = luigiSprites[4];
+            yield return new WaitForSeconds(0.5f);
+            spriteRenderer.sprite = luigiSprites[5];
+            yield return new WaitForSeconds(0.5f);
+            spriteRenderer.sprite = luigiSprites[6];
+            yield return new WaitForSeconds(0.5f);
+            spriteRenderer.sprite = luigiSprites[5];
+
+        }
+       
+        luigiDoor.GetComponent<DoorController>().CloseDoor();
+        luigiBoss.SetActive(false);
+        transform.localRotation = Quaternion.Euler(0, 180, 0);
+        spriteRenderer.sprite = luigiSprites[0];
+        UpdatePosition();
+        disableInput = false;
+    }
+    
 
 }

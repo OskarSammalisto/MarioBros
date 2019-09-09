@@ -57,8 +57,10 @@
           <e p="ReadMe.txt" t="Include" />
         </e>
         <e p="Scripts" t="Include">
+          <e p="BossController.cs" t="Include" />
           <e p="BottleCrateController.cs" t="Include" />
           <e p="ConveyorBeltController.cs" t="Include" />
+          <e p="DoorController.cs" t="Include" />
           <e p="GameController.cs" t="Include" />
           <e p="GameOver.cs" t="Include" />
           <e p="LuigiController.cs" t="Include" />

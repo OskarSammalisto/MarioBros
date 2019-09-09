@@ -7,17 +7,15 @@ public class MarioController : MonoBehaviour {
     public List<Transform> marioPositions = new List<Transform>();
     private List<int> crateMovePositions = new List<int>() {2, 20, 38};
     public List<Sprite> marioSprites = new List<Sprite>();
+    public Transform marioBreakPosition;
 
     public GameObject bottleCrate;
+    public GameObject marioBoss;
+    public GameObject marioDoor;
     private SpriteRenderer spriteRenderer;
-   
-//    //move box by trigger
-//    public delegate void MarioMoveCrate();
-//
-//    public static event MarioMoveCrate MoveCrate;
-    
-    
 
+
+    private bool disableInput = false;
     public int marioCurrentPosition = 1;
 
     private void OnEnable() {
@@ -35,21 +33,23 @@ public class MarioController : MonoBehaviour {
     private void Start() {
         UpdatePosition();
         spriteRenderer = GetComponent<SpriteRenderer>();
+       marioBoss.SetActive(false);
+      
+
     }
 
     private void MoveMarioUp() {
 
-        if (marioCurrentPosition > 0) {
+        if (marioCurrentPosition > 0 && !disableInput) {
             marioCurrentPosition--;
             UpdatePosition();
         }
-        
-      //  Debug.Log("Mario Up");
+        //  Debug.Log("Mario Up");
     }
 
     private void MoveMarioDown() {
 
-        if (marioCurrentPosition < marioPositions.Count - 1) {
+        if (marioCurrentPosition < marioPositions.Count - 1 && !disableInput) {
             marioCurrentPosition++;
             UpdatePosition();
         }
@@ -85,6 +85,32 @@ public class MarioController : MonoBehaviour {
         spriteRenderer.sprite = marioSprites[2];
         yield return new WaitForSeconds(0.2f);
         spriteRenderer.sprite = marioSprites[0];
+    }
+    
+    public IEnumerator MarioBreakAnimation() {
+        disableInput = true;
+        transform.position = marioBreakPosition.position;
+        transform.localRotation = Quaternion.Euler(0, 180, 0);
+        marioBoss.SetActive(true);
+        marioDoor.GetComponent<DoorController>().OpenDoor();
+        float time = Time.time;
+        while (time >= Time.time - 5f) {
+            spriteRenderer.sprite = marioSprites[5];
+            yield return new WaitForSeconds(0.5f);
+            spriteRenderer.sprite = marioSprites[6];
+            yield return new WaitForSeconds(0.5f);
+            spriteRenderer.sprite = marioSprites[7];
+            yield return new WaitForSeconds(0.5f);
+            spriteRenderer.sprite = marioSprites[6];
+
+        }
+       
+        marioDoor.GetComponent<DoorController>().CloseDoor();
+        marioBoss.SetActive(false);
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
+        spriteRenderer.sprite = marioSprites[0];
+        UpdatePosition();
+        disableInput = false;
     }
     
     

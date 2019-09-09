@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour {
   public GameObject bottleCrate;
   public GameObject truck;
   public GameObject gameOverText;
+  private DoorController doorController;
+  private BossController bossController;
   public Text scoreText;
   public Text missText;
   public List<String> missTextList = new List<string>(){"","Miss X", "Miss X X", "Miss X X X"};
@@ -28,6 +30,9 @@ public class GameController : MonoBehaviour {
   public float crateSpawnRate = 10f;
   private float crateSpawnRateModifier = 0.003f;
   private float maxSpawnRate = 1.5f;
+
+  public MarioController marioController;
+  public LuigiController luigiController;
   
   
   private bool gameOver;
@@ -35,7 +40,8 @@ public class GameController : MonoBehaviour {
   
    
    private void OnEnable() {
-       BottleCrateController.LoseLife += LifeLost;
+       BottleCrateController.LoseLifeMario += MarioMiss;
+       BottleCrateController.LoseLifeLuigi += LuigiMiss;
        BottleCrateController.IncreaseScore += GetPoints;
        TruckController.TruckIsFull += SpawnTruck;
        TruckController.TruckIsReady += TruckReady;
@@ -44,7 +50,8 @@ public class GameController : MonoBehaviour {
   
 
    private void OnDisable() {
-       BottleCrateController.LoseLife -= LifeLost;
+       BottleCrateController.LoseLifeMario -= MarioMiss;
+       BottleCrateController.LoseLifeLuigi -= LuigiMiss;
        BottleCrateController.IncreaseScore -= GetPoints;
        TruckController.TruckIsFull -= SpawnTruck;
        TruckController.TruckIsReady -= TruckReady;
@@ -84,10 +91,22 @@ public class GameController : MonoBehaviour {
        
    }
 
+   private void MarioMiss() {
+       StartCoroutine(LifeLost());
+       StartCoroutine(marioController.MarioBreakAnimation());
+   }
 
-   private void LifeLost() {
+   private void LuigiMiss() {
+       StartCoroutine(LifeLost());
+       StartCoroutine(luigiController.LuigiBreakAnimation());
+   }
+
+   private IEnumerator LifeLost() {
        misses++;
        SetMissText();
+       Pause?.Invoke();
+       pause = true;
+       
 
        if (misses == 3) {
            gameOver = true;
@@ -96,6 +115,10 @@ public class GameController : MonoBehaviour {
            gameOverText.SetActive(true);
            //  Debug.Log("Game Over");
        }
+       yield return new WaitForSeconds(5f);
+       UnPause?.Invoke();
+       Debug.Log("unpaused");
+       pause = false;
        //Debug.Log("Lost Life");
    }
 

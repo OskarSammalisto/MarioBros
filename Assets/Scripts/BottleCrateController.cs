@@ -8,9 +8,10 @@ public class BottleCrateController : MonoBehaviour {
     public delegate void ScoreBoard();
 
     public static event ScoreBoard IncreaseScore;
-    public static event ScoreBoard LoseLife;
+    public static event ScoreBoard LoseLifeMario;
+    public static event ScoreBoard LoseLifeLuigi;
     public static event ScoreBoard CrateOnTruck;
-    
+
     //move trigger to crate
     private List<int> crateMovePositions = new List<int>() {2, 11, 20, 29, 38, 47};
     public List<Sprite> crateSprites = new List<Sprite>();
@@ -65,13 +66,13 @@ public class BottleCrateController : MonoBehaviour {
                         else if ((i == 3 && bottleCrateCurrentPosition == 2) || (i == 21 && bottleCrateCurrentPosition == 20) || 
                             (i == 39 && bottleCrateCurrentPosition == 38)) {
                             BrokenCrate(true);
-                            LoseLife?.Invoke();
+                            LoseLifeMario?.Invoke();
                             break;
                         }
                         else if ((i == 12 && bottleCrateCurrentPosition == 11) || (i == 30 && bottleCrateCurrentPosition == 29) ||
                                  (i == 48 && bottleCrateCurrentPosition == 47)) {
                             BrokenCrate(false);
-                            LoseLife?.Invoke();
+                            LoseLifeLuigi?.Invoke();
                             break;
                         }
                         else {
@@ -94,9 +95,9 @@ public class BottleCrateController : MonoBehaviour {
              if (bottleCrateCurrentPosition == crateToTruckPosition) {
 
                  GameObject parent = transform.parent.gameObject;
-                 Destroy(parent);
                  CrateOnTruck?.Invoke();
-                // Debug.Log("Crate is on truck!");
+                 Destroy(parent);
+                 // Debug.Log("Crate is on truck!");
              }
              else if (bottleCrateCurrentPosition >= 3) {
                  walkToggle = !walkToggle;
