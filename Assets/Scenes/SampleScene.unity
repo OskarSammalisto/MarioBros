@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 38249018}
   m_Layer: 0
   m_Name: LuigiUp
-  m_TagString: Untagged
+  m_TagString: LuigiUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -847,12 +847,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237221036}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -6.49, y: -1.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 1651537144}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &240568988
 GameObject:
@@ -2743,7 +2743,7 @@ GameObject:
   - component: {fileID: 909663257}
   m_Layer: 0
   m_Name: MarioUp
-  m_TagString: Untagged
+  m_TagString: MarioUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2769,7 +2769,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909663255}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f268ecf7545aa8840b4bb7891d31ef29, type: 3}
   m_Name: 
@@ -3180,7 +3180,7 @@ GameObject:
   - component: {fileID: 1167213741}
   m_Layer: 0
   m_Name: LuigiDown
-  m_TagString: Untagged
+  m_TagString: LuigiDown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3206,7 +3206,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167213739}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f268ecf7545aa8840b4bb7891d31ef29, type: 3}
   m_Name: 
@@ -3687,12 +3687,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515550037}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6.69, y: -0.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 1651537144}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1521055749
 GameObject:
@@ -3964,7 +3964,7 @@ GameObject:
   - component: {fileID: 1577120328}
   m_Layer: 0
   m_Name: MarioDown
-  m_TagString: Untagged
+  m_TagString: MarioDown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3990,7 +3990,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1577120326}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f268ecf7545aa8840b4bb7891d31ef29, type: 3}
   m_Name: 
@@ -4214,6 +4214,8 @@ Transform:
   - {fileID: 1432403719}
   - {fileID: 843142367}
   - {fileID: 107277106}
+  - {fileID: 1515550038}
+  - {fileID: 237221037}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5218,7 +5220,7 @@ MonoBehaviour:
   - Miss X X
   - Miss X X X
   score: 0
-  crateSpawnRate: 10
+  crateSpawnRate: 12
   marioController: {fileID: 1521055752}
   luigiController: {fileID: 1757562775}
 --- !u!1 &2111448828

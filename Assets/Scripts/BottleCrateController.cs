@@ -24,7 +24,7 @@ public class BottleCrateController : MonoBehaviour {
 //    public GameObject mario;
 //    public GameObject luigi;
     public int bottleCrateCurrentPosition = 0;
-    public float crateSpeed = 0.8f;
+    public float crateSpeed = 1.2f;
     
     private bool pause = false;
     private bool broken;

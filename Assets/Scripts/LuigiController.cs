@@ -52,7 +52,7 @@ public class LuigiController : MonoBehaviour {
     }
 
     private void MoveLuigiDown() {
-        if (luigiCurrentPosition < luigiPositions.Count - 1 && !disableInput) {
+        if (luigiCurrentPosition < luigiPositions.Count - 2 && !disableInput) {
             luigiCurrentPosition++;
             UpdatePosition();
         }

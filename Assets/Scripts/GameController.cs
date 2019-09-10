@@ -27,9 +27,10 @@ public class GameController : MonoBehaviour {
   private int misses;
 
   private int missResetScore = 300;
-  public float crateSpawnRate = 10f;
-  private float crateSpawnRateModifier = 0.003f;
-  private float maxSpawnRate = 1.5f;
+  public float crateSpawnRate = 12f;
+  private float crateSpawnRateModifier = 0.0015f;
+  private float maxSpawnRate = 2.5f;
+  private float pauseDurationOnCrateBreak = 6.0f;
 
   public MarioController marioController;
   public LuigiController luigiController;
@@ -115,7 +116,7 @@ public class GameController : MonoBehaviour {
            gameOverText.SetActive(true);
            //  Debug.Log("Game Over");
        }
-       yield return new WaitForSeconds(5f);
+       yield return new WaitForSeconds(pauseDurationOnCrateBreak);
        UnPause?.Invoke();
        Debug.Log("unpaused");
        pause = false;

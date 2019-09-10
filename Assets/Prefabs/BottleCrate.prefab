@@ -2191,7 +2191,7 @@ MonoBehaviour:
   - {fileID: 2306848365827321859}
   - {fileID: 959205340200591982}
   bottleCrateCurrentPosition: 0
-  crateSpeed: 0.8
+  crateSpeed: 1.2
 --- !u!61 &3295958078874181234
 BoxCollider2D:
   m_ObjectHideFlags: 0

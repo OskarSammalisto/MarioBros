@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - LuigiUp
+  - LuigiDown
+  - MarioUp
+  - MarioDown
   layers:
   - Default
   - TransparentFX

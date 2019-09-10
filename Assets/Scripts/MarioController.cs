@@ -49,7 +49,7 @@ public class MarioController : MonoBehaviour {
 
     private void MoveMarioDown() {
 
-        if (marioCurrentPosition < marioPositions.Count - 1 && !disableInput) {
+        if (marioCurrentPosition < marioPositions.Count - 2 && !disableInput) {
             marioCurrentPosition++;
             UpdatePosition();
         }
