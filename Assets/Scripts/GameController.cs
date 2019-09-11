@@ -21,12 +21,13 @@ public class GameController : MonoBehaviour {
   public Text missText;
   public List<String> missTextList = new List<string>(){"","Miss X", "Miss X X", "Miss X X X"};
   
-  [SerializeField]
-  private int score;
   
+  private int score;
   private int misses;
-
+  private int maxMisses = 3;
   private int missResetScore = 300;
+  
+  
   public float crateSpawnRate = 12f;
   private float crateSpawnRateModifier = 0.0015f;
   private float maxSpawnRate = 2.5f;
@@ -34,6 +35,7 @@ public class GameController : MonoBehaviour {
 
   public MarioController marioController;
   public LuigiController luigiController;
+  public SoundManager soundManager;
   
   
   private bool gameOver;
@@ -84,6 +86,7 @@ public class GameController : MonoBehaviour {
 //           GameObject crate = Instantiate<GameObject>(bottleCrate);
 //           crate.SetActive(true);
            if (!pause) {
+               soundManager.PlayStomp();
                Instantiate(bottleCrate);
            }
            
@@ -109,17 +112,22 @@ public class GameController : MonoBehaviour {
        pause = true;
        
 
-       if (misses == 3) {
+       if (misses == maxMisses) {
            gameOver = true;
            pause = true;
            Pause?.Invoke();
+           soundManager.PlayGameOver();
            gameOverText.SetActive(true);
+           yield break;
            //  Debug.Log("Game Over");
        }
        yield return new WaitForSeconds(pauseDurationOnCrateBreak);
        UnPause?.Invoke();
        Debug.Log("unpaused");
        pause = false;
+       if (misses == maxMisses - 1) {
+           soundManager.PlayHurryUp();
+       }
        //Debug.Log("Lost Life");
    }
 
@@ -128,8 +136,10 @@ public class GameController : MonoBehaviour {
        SetScoreText();
        DifficultyAdjuster();
        if (score == missResetScore) {
+           soundManager.PlayOneUp();
            misses = 0;
            SetMissText();
+           missResetScore += missResetScore;
        }
 
        
@@ -147,7 +157,7 @@ public class GameController : MonoBehaviour {
    }
 
    private void SetMissText() {
-       if (misses <= 3) {
+       if (misses <= maxMisses) {
            missText.text = missTextList[misses];
        }
        
@@ -155,7 +165,8 @@ public class GameController : MonoBehaviour {
 
    void TruckReady() {
        pause = false;
-       Instantiate(bottleCrate);
+       soundManager.PlayFortressClear();
+      // Instantiate(bottleCrate);
        UnPause?.Invoke();
    }
    

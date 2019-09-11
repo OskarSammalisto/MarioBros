@@ -12,6 +12,7 @@ public class MarioController : MonoBehaviour {
     public GameObject bottleCrate;
     public GameObject marioBoss;
     public GameObject marioDoor;
+    public SoundManager soundManager;
     private SpriteRenderer spriteRenderer;
 
 
@@ -42,6 +43,7 @@ public class MarioController : MonoBehaviour {
 
         if (marioCurrentPosition > 0 && !disableInput) {
             marioCurrentPosition--;
+            soundManager.PlayJump();
             UpdatePosition();
         }
         //  Debug.Log("Mario Up");
@@ -51,6 +53,7 @@ public class MarioController : MonoBehaviour {
 
         if (marioCurrentPosition < marioPositions.Count - 2 && !disableInput) {
             marioCurrentPosition++;
+            soundManager.PlayJump();
             UpdatePosition();
         }
         
@@ -63,9 +66,12 @@ public class MarioController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (marioCurrentPosition == 2) {
+            soundManager.PlayMoveShell();
             StartCoroutine(MarioMoveShellBottom());
+            
         }
         else {
+            soundManager.PlayMoveShell();
             StartCoroutine(MarioMoveShell());
         }
         
@@ -88,6 +94,7 @@ public class MarioController : MonoBehaviour {
     }
     
     public IEnumerator MarioBreakAnimation() {
+        soundManager.PlayLoseLife();
         disableInput = true;
         transform.position = marioBreakPosition.position;
         transform.localRotation = Quaternion.Euler(0, 180, 0);

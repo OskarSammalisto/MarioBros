@@ -17,6 +17,7 @@ public class LuigiController : MonoBehaviour {
     public GameObject bottleCrate;
     public GameObject luigiDoor;
     public GameObject luigiBoss;
+    public SoundManager soundManager;
     private SpriteRenderer spriteRenderer;
     private bool disableInput = false;
     
@@ -37,6 +38,7 @@ public class LuigiController : MonoBehaviour {
     }
 
     private void Start() {
+       
         UpdatePosition();
         spriteRenderer = GetComponent<SpriteRenderer>();
         luigiBoss.SetActive(false);
@@ -46,6 +48,7 @@ public class LuigiController : MonoBehaviour {
 
         if (luigiCurrentPosition > 0 && !disableInput) {
             luigiCurrentPosition--;
+            soundManager.PlayJump();
             UpdatePosition();
         }
         //  Debug.Log("Luigi Up");,
@@ -53,6 +56,7 @@ public class LuigiController : MonoBehaviour {
 
     private void MoveLuigiDown() {
         if (luigiCurrentPosition < luigiPositions.Count - 2 && !disableInput) {
+            soundManager.PlayJump();
             luigiCurrentPosition++;
             UpdatePosition();
         }
@@ -64,6 +68,7 @@ public class LuigiController : MonoBehaviour {
     }
     
     private void OnTriggerEnter2D(Collider2D other) {
+        soundManager.PlayMoveShell();
         if (luigiCurrentPosition == 0) {
             StartCoroutine(LuigiMoveShellTop());
         }
@@ -91,6 +96,7 @@ public class LuigiController : MonoBehaviour {
     }
 
     public IEnumerator LuigiBreakAnimation() {
+        soundManager.PlayLoseLife();
         disableInput = true;
         transform.position = luigiBreakPosition.position;
         transform.localRotation = Quaternion.Euler(0, 0, 0);

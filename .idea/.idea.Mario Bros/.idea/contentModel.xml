@@ -66,6 +66,7 @@
           <e p="LuigiController.cs" t="Include" />
           <e p="MarioController.cs" t="Include" />
           <e p="MoveInput.cs" t="Include" />
+          <e p="SoundManager.cs" t="Include" />
           <e p="TruckController.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">

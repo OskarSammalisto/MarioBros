@@ -23,6 +23,9 @@ public class TruckController : MonoBehaviour {
     private float newTruckPauseTime = 7.0f;
     private bool newTruckUnpause = true;
 
+    private SoundManager soundManager;
+    
+
 
     
     
@@ -35,8 +38,12 @@ public class TruckController : MonoBehaviour {
     }
 
     private void Start() {
+         GameObject soundMngrObj = GameObject.FindWithTag("SoundManager");
+        soundManager = soundMngrObj.GetComponent<SoundManager>();
         start = Time.time;
         MoveTruckIntoPosition();
+        
+        //Debug.Log(" ");
     }
 
     private void Update() {
@@ -65,6 +72,7 @@ public class TruckController : MonoBehaviour {
         if (numberOfCrates >= positionsOnTruck.Count) {
             TruckIsFull?.Invoke();
             StartCoroutine(MoveTruck());
+            soundManager.PlayAirshipClear();
             StartCoroutine(DestroyTruck());
            // Debug.Log("Truck is Full");
         }

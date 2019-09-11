@@ -1134,6 +1134,7 @@ MonoBehaviour:
   truckPositions:
   - {fileID: 2617980042013236413}
   - {fileID: 2617980041290773794}
+  soundManager: {fileID: 0}
 --- !u!1 &2617980042946464404
 GameObject:
   m_ObjectHideFlags: 0
