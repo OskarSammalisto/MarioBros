@@ -46,7 +46,7 @@ public class MarioController : MonoBehaviour {
             soundManager.PlayJump();
             UpdatePosition();
         }
-        //  Debug.Log("Mario Up");
+        
     }
 
     private void MoveMarioDown() {
@@ -57,7 +57,7 @@ public class MarioController : MonoBehaviour {
             UpdatePosition();
         }
         
-      //  Debug.Log("Mario Down");
+
     }
 
     private void UpdatePosition() {

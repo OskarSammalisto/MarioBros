@@ -60,7 +60,7 @@ public class LuigiController : MonoBehaviour {
             luigiCurrentPosition++;
             UpdatePosition();
         }
-        // Debug.Log("Luigi Down");
+        
     }
 
     private void UpdatePosition() {

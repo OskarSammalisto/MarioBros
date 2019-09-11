@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class GameController : MonoBehaviour {
     
@@ -19,7 +20,7 @@ public class GameController : MonoBehaviour {
   private BossController bossController;
   public Text scoreText;
   public Text missText;
-  public List<String> missTextList = new List<string>(){"","Miss X", "Miss X X", "Miss X X X"};
+  public List<String> missTextList = new List<string>(){"","Miss: X", "Miss: X X", "Miss: X X X"};
   
   
   private int score;
@@ -29,9 +30,11 @@ public class GameController : MonoBehaviour {
   
   
   public float crateSpawnRate = 12f;
-  private float crateSpawnRateModifier = 0.0015f;
+  private float crateSpawnRateModifier = 0.002f;
   private float maxSpawnRate = 2.5f;
   private float pauseDurationOnCrateBreak = 6.0f;
+  private Random random = new Random();
+  private double randomRange = 1.3;
 
   public MarioController marioController;
   public LuigiController luigiController;
@@ -76,21 +79,22 @@ public class GameController : MonoBehaviour {
        if (!gameOver) {
            pause = true;
            Pause?.Invoke();
-           Debug.Log("new truck");
            Instantiate(truck);
        }
    }
 
    private IEnumerator CreateCrate() {
        while (!gameOver) {
-//           GameObject crate = Instantiate<GameObject>(bottleCrate);
-//           crate.SetActive(true);
+
            if (!pause) {
                soundManager.PlayStomp();
                Instantiate(bottleCrate);
            }
-           
-           yield return new WaitForSeconds(crateSpawnRate);
+
+           double randomModifier = random.NextDouble() * randomRange;
+           float rand = (float) randomModifier;
+          
+           yield return new WaitForSeconds(crateSpawnRate + rand);
        }
        
    }
@@ -119,22 +123,20 @@ public class GameController : MonoBehaviour {
            soundManager.PlayGameOver();
            gameOverText.SetActive(true);
            yield break;
-           //  Debug.Log("Game Over");
+           
        }
        yield return new WaitForSeconds(pauseDurationOnCrateBreak);
        UnPause?.Invoke();
-       Debug.Log("unpaused");
        pause = false;
        if (misses == maxMisses - 1) {
            soundManager.PlayHurryUp();
        }
-       //Debug.Log("Lost Life");
+       
    }
 
    private void GetPoints() {
        score++;
        SetScoreText();
-       DifficultyAdjuster();
        if (score == missResetScore) {
            soundManager.PlayOneUp();
            misses = 0;
@@ -166,7 +168,7 @@ public class GameController : MonoBehaviour {
    void TruckReady() {
        pause = false;
        soundManager.PlayFortressClear();
-      // Instantiate(bottleCrate);
+       DifficultyAdjuster();
        UnPause?.Invoke();
    }
    

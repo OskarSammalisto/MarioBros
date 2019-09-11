@@ -21,6 +21,7 @@ public class TruckController : MonoBehaviour {
     private float newTruckSpeed = 7f;
     private float truckDelayMoveTruck = 1.2f;
     private float newTruckPauseTime = 7.0f;
+    private float destroyTruckDelay = 6.0f;
     private bool newTruckUnpause = true;
 
     private SoundManager soundManager;
@@ -51,7 +52,7 @@ public class TruckController : MonoBehaviour {
         if (newTruckUnpause) {
              
              if (Time.time  >= start + newTruckPauseTime ) {
-                 Debug.Log("started");
+                 
                         TruckIsReady?.Invoke();
                         newTruckUnpause = false;
              }
@@ -63,7 +64,7 @@ public class TruckController : MonoBehaviour {
         if (numberOfCrates < positionsOnTruck.Count ) {
              cratesOnTruck[numberOfCrates].SetActive(true);
                     LeanTween.move(cratesOnTruck[numberOfCrates], positionsOnTruck[numberOfCrates].transform.position, time: crateLoadSpeed); 
-                  //  cratesOnTruck[numberOfCrates].transform.position = positionsOnTruck[numberOfCrates].transform.position;
+                 
                     numberOfCrates++;
                     Debug.Log(numberOfCrates);
         }
@@ -74,7 +75,7 @@ public class TruckController : MonoBehaviour {
             StartCoroutine(MoveTruck());
             soundManager.PlayAirshipClear();
             StartCoroutine(DestroyTruck());
-           // Debug.Log("Truck is Full");
+          
         }
        
     }
@@ -93,7 +94,7 @@ public class TruckController : MonoBehaviour {
     }
 
     IEnumerator DestroyTruck() {
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(destroyTruckDelay);
         Destroy(gameObject);
     }
 }

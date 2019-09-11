@@ -24,56 +24,47 @@ public class SoundManager : MonoBehaviour {
     public void PlayJump() {
         
         audioSource.PlayOneShot(jump);
-//        audioSource.clip = jump;
-//        audioSource.Play();
+
     }
 
     public void PlayHurryUp() {
         audioSource.PlayOneShot(hurryUp);
-//        audioSource.clip = hurryUp;
-//        audioSource.Play();
+
     }
 
     public void PlayLoseLife() {
         audioSource.PlayOneShot(loseLife);
-//        audioSource.clip = loseLife;
-//        audioSource.Play();
+
     }
 
     public void PlayOneUp() {
         audioSource.PlayOneShot(oneUp);
-//        audioSource.clip = oneUp;
-//        audioSource.Play();
+
     }
 
     public void PlayAirshipClear() {
         audioSource.PlayOneShot(airshipClear);
-//        audioSource.clip = airshipClear;
-//        audioSource.Play();
+
     }
 
     public void PlayGameOver() {
         audioSource.PlayOneShot(gameOver);
-//        audioSource.clip = gameOver;
-//        audioSource.Play();
+
     }
 
     public void PlayMoveShell() {
         audioSource.PlayOneShot(moveShell);
-//        audioSource.clip = moveShell;
-//        audioSource.Play();
+
     }
 
     public void PlayStomp() {
         audioSource.PlayOneShot(stomp);
-//        audioSource.clip = stomp;
-//        audioSource.Play();
+
     }
 
     public void PlayFortressClear() {
         audioSource.PlayOneShot(fortressClear);
-//        audioSource.clip = fortressClear;
-//        audioSource.Play();
+
     }
     
     

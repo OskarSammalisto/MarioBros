@@ -23,7 +23,6 @@ public class BossController : MonoBehaviour {
     void Update() {
         if (lastTime + animationSpeed <= Time.time) {
             lastTime = Time.time;
-//            Debug.Log("upd sprite");
             spriteRenderer.sprite = bossSprites[spriteIndex];
             if (spriteIndex == 2) {
                 goingUp = false;

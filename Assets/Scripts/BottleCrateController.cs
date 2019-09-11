@@ -16,13 +16,13 @@ public class BottleCrateController : MonoBehaviour {
     private List<int> crateMovePositions = new List<int>() {2, 11, 20, 29, 38, 47};
     public List<Sprite> crateSprites = new List<Sprite>();
     private int crateToTruckPosition = 48;
+    private int spawnConveyorBeltLength = 3;
     private SpriteRenderer spRenderer;
     
     
     public List<Transform> bottleCratePositions = new List<Transform>();
     public List<Transform> brokenCratePositions = new List<Transform>();
-//    public GameObject mario;
-//    public GameObject luigi;
+
     public int bottleCrateCurrentPosition = 0;
     public float crateSpeed = 1.2f;
     
@@ -97,9 +97,8 @@ public class BottleCrateController : MonoBehaviour {
                  GameObject parent = transform.parent.gameObject;
                  CrateOnTruck?.Invoke();
                  Destroy(parent);
-                 // Debug.Log("Crate is on truck!");
              }
-             else if (bottleCrateCurrentPosition >= 3) {
+             else if (bottleCrateCurrentPosition >= spawnConveyorBeltLength) {
                  walkToggle = !walkToggle;
                  WalkAnimation(walkToggle);
              }
@@ -124,11 +123,11 @@ public class BottleCrateController : MonoBehaviour {
         broken = true;
         spRenderer.sprite = crateSprites[2];
         if (marioBroke) {
-          //  Debug.Log("mario broke it");
+          
           transform.position = brokenCratePositions[0].position;
         }
         else {
-          //  Debug.Log("luigi broke it");
+          
           transform.position = brokenCratePositions[1].position;
         }
     }
@@ -138,12 +137,12 @@ public class BottleCrateController : MonoBehaviour {
         UpdatePosition();
         spRenderer.flipX = !spRenderer.flipX;
         IncreaseScore?.Invoke();
-       // Debug.Log("Player Move Crate");
+       
     }
     
     private void OnTriggerEnter2D(Collider2D other) {
 
-//       Debug.Log(other.name );
+
         
         foreach (var position in crateMovePositions) {
             
