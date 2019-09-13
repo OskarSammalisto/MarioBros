@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee2567d4-b568-46ed-be89-a11678e5c25a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mario Bros/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mario Bros/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mario Bros/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mario Bros/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BottleCrateController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BottleCrateController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LuigiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LuigiController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MarioController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MarioController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TruckController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TruckController.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -116,7 +110,7 @@
       <workItem from="1567796936961" duration="2249000" />
       <workItem from="1568012627335" duration="6717000" />
       <workItem from="1568099672151" duration="1115000" />
-      <workItem from="1568100900123" duration="8051000" />
+      <workItem from="1568100900123" duration="8223000" />
     </task>
     <servers />
   </component>
